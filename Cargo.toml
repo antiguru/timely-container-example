@@ -1,0 +1,10 @@
+[package]
+name = "timely-container-example"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rand = { version = "0.8", features = ["small_rng"] }
+timely = { git = "https://github.com/antiguru/timely-dataflow", branch = "container_stream_rework", features = ["bincode"] }
+timely_communication = { git = "https://github.com/antiguru/timely-dataflow", branch = "container_stream_rework" }
+columnation = { git = "https://github.com/antiguru/columnation", branch = "container", features = ["timely_container", "serde"] }
