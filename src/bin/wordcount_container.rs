@@ -23,23 +23,6 @@ fn main() {
         // create a new input, exchange data, and inspect its output
         worker.dataflow::<usize,_,_>(|scope| {
             input.to_stream(scope)
-                 // .unary(Pipeline, "flat map", |_cap, _info| {
-                 //     let mut buffer: ColumnStack<String> = Default::default();
-                 //     let mut output_buffer: ColumnStack<String> = Default::default();
-                 //     move |input, output| {
-                 //         while let Some((time, data)) = input.next() {
-                 //             RefOrMut::<ColumnStack<String>>::swap(data, &mut buffer);
-                 //             for text in &buffer[..] {
-                 //                 for word in text.split_whitespace()
-                 //                     .map(str::to_owned) {
-                 //                     output_buffer.copy(&word);
-                 //                 }
-                 //             }
-                 //             output.session(&time).give_container(&mut output_buffer);
-                 //         }
-                 //     }
-                 // }
-                 // )
                  .unary_frontier(exchange, "WordCount", |_capability, _info| {
 
                     let mut queues = HashMap::new();
@@ -67,7 +50,6 @@ fn main() {
 
                         queues.retain(|_key, val| !val.is_empty());
                     }})
-                 // .inspect(|x| println!("seen: {:?}", x))
                  .probe_with(&mut probe);
         });
 
@@ -82,7 +64,7 @@ fn main() {
             let mut stack = ColumnStack::default();
             for _ in 0..size {
                 let len = rng.gen_range(1..33);
-                stack.copy(&String::from_iter((0..len).map(|_| rng.gen_range('a'..'b'))));
+                stack.copy(&String::from_iter((0..len).map(|_| rng.gen_range('a'..'c'))));
             }
             batches.push(stack);
         }

@@ -37,7 +37,7 @@ checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 [[package]]
 name = "columnation"
 version = "0.1.0"
-source = "git+https://github.com/antiguru/columnation?branch=container#6b6e1d156965d0afd7d1c2a4b3df260292b1bd5b"
+source = "git+https://github.com/antiguru/columnation?branch=container#ea7cc6fdfdfc783000a5379a986a93fc03df6a81"
 dependencies = [
  "serde",
  "timely_container",
@@ -62,6 +62,26 @@ dependencies = [
  "cfg-if",
  "lazy_static",
 ]
+
+[[package]]
+name = "differential-dataflow"
+version = "0.12.0"
+source = "git+https://github.com/antiguru/differential-dataflow?branch=columnation-container#4d1bada5af9be6aa14590e050a6714231406c6c4"
+dependencies = [
+ "abomonation",
+ "abomonation_derive",
+ "columnation",
+ "fnv",
+ "serde",
+ "serde_derive",
+ "timely",
+]
+
+[[package]]
+name = "fnv"
+version = "1.0.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1"
 
 [[package]]
 name = "futures-core"
@@ -277,6 +297,7 @@ name = "timely-container-example"
 version = "0.1.0"
 dependencies = [
  "columnation",
+ "differential-dataflow",
  "rand",
  "timely",
  "timely_communication",
