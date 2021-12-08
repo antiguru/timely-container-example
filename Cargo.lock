@@ -37,7 +37,7 @@ checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 [[package]]
 name = "columnation"
 version = "0.1.0"
-source = "git+https://github.com/antiguru/columnation?branch=container#ea7cc6fdfdfc783000a5379a986a93fc03df6a81"
+source = "git+https://github.com/antiguru/columnation?branch=container#052affed56dd7a7e1b965773a47c4c6f0609fbb4"
 dependencies = [
  "serde",
  "timely_container",
@@ -66,7 +66,7 @@ dependencies = [
 [[package]]
 name = "differential-dataflow"
 version = "0.12.0"
-source = "git+https://github.com/antiguru/differential-dataflow?branch=columnation-container#4d1bada5af9be6aa14590e050a6714231406c6c4"
+source = "git+https://github.com/antiguru/differential-dataflow?branch=columnation-container#56ca6093a8767d5bb8362c703737699b1e6e72eb"
 dependencies = [
  "abomonation",
  "abomonation_derive",
