@@ -1,9 +1,9 @@
 extern crate timely;
 
-use columnation::ColumnStack;
 use rand::{Rng, SeedableRng};
 use std::collections::HashMap;
 use std::time::Instant;
+use timely::container::columnation::TimelyStack;
 
 use timely::dataflow::channels::pact::ExchangeCore;
 use timely::dataflow::operators::{Operator, Probe};
@@ -32,7 +32,7 @@ fn main() {
                             queues
                                 .entry(time.retain())
                                 .or_insert(Vec::new())
-                                .push(RefOrMut::<ColumnStack<String>>::replace(
+                                .push(RefOrMut::<TimelyStack<String>>::replace(
                                     data,
                                     Default::default(),
                                 ));
@@ -65,7 +65,7 @@ fn main() {
         let mut batches = Vec::new();
         for _ in 0..batch_count {
             print!(".");
-            let mut stack = ColumnStack::default();
+            let mut stack = TimelyStack::default();
             for _ in 0..size {
                 let len = rng.gen_range(1..33);
                 stack.copy(&String::from_iter(

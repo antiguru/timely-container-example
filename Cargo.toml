@@ -8,8 +8,6 @@ rand = { version = "0.8", features = ["small_rng"] }
 timely = { git = "https://github.com/antiguru/timely-dataflow", branch = "container_stream_rework", features = ["bincode"] }
 timely_communication = { git = "https://github.com/antiguru/timely-dataflow", branch = "container_stream_rework" }
 differential-dataflow = { git = "https://github.com/antiguru/differential-dataflow", branch = "columnation-container" }
-columnation = { git = "https://github.com/antiguru/columnation", branch = "container", features = ["timely_container", "serde"] }
 #timely = { path = "../timely-dataflow/timely", features = ["bincode"] }
 #timely_communication = { path = "../timely-dataflow/communication" }
 #differential-dataflow = { path = "../differential-dataflow" }
-#columnation = { path = "../columnation", features = ["timely_container", "serde"] }

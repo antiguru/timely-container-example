@@ -37,11 +37,7 @@ checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 [[package]]
 name = "columnation"
 version = "0.1.0"
-source = "git+https://github.com/antiguru/columnation?branch=container#052affed56dd7a7e1b965773a47c4c6f0609fbb4"
-dependencies = [
- "serde",
- "timely_container",
-]
+source = "git+https://github.com/antiguru/columnation?branch=container#21a9b310301ad8c070b36668dc3eddba7afda6e8"
 
 [[package]]
 name = "crossbeam-channel"
@@ -66,11 +62,10 @@ dependencies = [
 [[package]]
 name = "differential-dataflow"
 version = "0.12.0"
-source = "git+https://github.com/antiguru/differential-dataflow?branch=columnation-container#56ca6093a8767d5bb8362c703737699b1e6e72eb"
+source = "git+https://github.com/antiguru/differential-dataflow?branch=columnation-container#8b16b708a504f8dbc541dddeb4080483d0faad63"
 dependencies = [
  "abomonation",
  "abomonation_derive",
- "columnation",
  "fnv",
  "serde",
  "serde_derive",
@@ -148,9 +143,9 @@ checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
 
 [[package]]
 name = "libc"
-version = "0.2.108"
+version = "0.2.109"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8521a1b57e76b1ec69af7599e75e38e7b7fad6610f037db8c79b127201b5d119"
+checksum = "f98a04dce437184842841303488f70d0188c5f51437d2a834dc097eafa909a01"
 
 [[package]]
 name = "pin-project-lite"
@@ -172,9 +167,9 @@ checksum = "ed0cfbc8191465bed66e1718596ee0b0b35d5ee1f41c5df2189d0fe8bde535ba"
 
 [[package]]
 name = "proc-macro2"
-version = "1.0.32"
+version = "1.0.33"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ba508cc11742c0dc5c1659771673afbab7a0efab23aa17e854cbab0837ed0b43"
+checksum = "fb37d2df5df740e582f28f8560cf425f52bb267d872fe58358eadb554909f07a"
 dependencies = [
  "unicode-xid",
 ]
@@ -230,15 +225,15 @@ dependencies = [
 
 [[package]]
 name = "serde"
-version = "1.0.130"
+version = "1.0.131"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f12d06de37cf59146fbdecab66aa99f9fe4f78722e3607577a5375d66bd0c913"
+checksum = "b4ad69dfbd3e45369132cc64e6748c2d65cdfb001a2b1c232d128b4ad60561c1"
 
 [[package]]
 name = "serde_derive"
-version = "1.0.130"
+version = "1.0.131"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d7bc1a1ab1961464eae040d96713baa5a724a8152c1222492465b54322ec508b"
+checksum = "b710a83c4e0dff6a3d511946b95274ad9ca9e5d3ae497b63fda866ac955358d2"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -277,7 +272,7 @@ dependencies = [
 [[package]]
 name = "timely"
 version = "0.12.0"
-source = "git+https://github.com/antiguru/timely-dataflow?branch=container_stream_rework#d5291a5617686619664ad259179ff4e64255d6b8"
+source = "git+https://github.com/antiguru/timely-dataflow?branch=container_stream_rework#fd0e7ed8e02b2efdc499b093aaa43bf06796be8f"
 dependencies = [
  "abomonation",
  "abomonation_derive",
@@ -296,7 +291,6 @@ dependencies = [
 name = "timely-container-example"
 version = "0.1.0"
 dependencies = [
- "columnation",
  "differential-dataflow",
  "rand",
  "timely",
@@ -306,12 +300,12 @@ dependencies = [
 [[package]]
 name = "timely_bytes"
 version = "0.12.0"
-source = "git+https://github.com/antiguru/timely-dataflow?branch=container_stream_rework#d5291a5617686619664ad259179ff4e64255d6b8"
+source = "git+https://github.com/antiguru/timely-dataflow?branch=container_stream_rework#fd0e7ed8e02b2efdc499b093aaa43bf06796be8f"
 
 [[package]]
 name = "timely_communication"
 version = "0.12.0"
-source = "git+https://github.com/antiguru/timely-dataflow?branch=container_stream_rework#d5291a5617686619664ad259179ff4e64255d6b8"
+source = "git+https://github.com/antiguru/timely-dataflow?branch=container_stream_rework#fd0e7ed8e02b2efdc499b093aaa43bf06796be8f"
 dependencies = [
  "abomonation",
  "abomonation_derive",
@@ -327,12 +321,16 @@ dependencies = [
 [[package]]
 name = "timely_container"
 version = "0.12.0"
-source = "git+https://github.com/antiguru/timely-dataflow?branch=container_stream_rework#d5291a5617686619664ad259179ff4e64255d6b8"
+source = "git+https://github.com/antiguru/timely-dataflow?branch=container_stream_rework#fd0e7ed8e02b2efdc499b093aaa43bf06796be8f"
+dependencies = [
+ "columnation",
+ "serde",
+]
 
 [[package]]
 name = "timely_logging"
 version = "0.12.0"
-source = "git+https://github.com/antiguru/timely-dataflow?branch=container_stream_rework#d5291a5617686619664ad259179ff4e64255d6b8"
+source = "git+https://github.com/antiguru/timely-dataflow?branch=container_stream_rework#fd0e7ed8e02b2efdc499b093aaa43bf06796be8f"
 
 [[package]]
 name = "unicode-width"

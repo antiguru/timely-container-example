@@ -1,6 +1,5 @@
 extern crate timely;
 
-use columnation::ColumnStack;
 use differential_dataflow::collection::Collection;
 use differential_dataflow::{AsCollection, Hashable};
 use rand::{Rng, SeedableRng};
@@ -8,6 +7,7 @@ use std::time::Instant;
 
 use differential_dataflow::operators::arrange::arrangement::Arrange;
 use differential_dataflow::trace::implementations::ord::ColValSpine;
+use timely::container::columnation::TimelyStack;
 use timely::dataflow::channels::pact::ExchangeCore;
 use timely::dataflow::operators::Probe;
 use timely::dataflow::{InputHandleCore, ProbeHandle};
@@ -25,10 +25,10 @@ fn main() {
 
         // create a new input, exchange data, and inspect its output
         worker.dataflow::<usize, _, _>(|scope| {
-            let collection: Collection<_, _, _, ColumnStack<_>> =
+            let collection: Collection<_, _, _, TimelyStack<_>> =
                 input.to_stream(scope).as_collection();
             collection
-                .arrange_core::<_, ColValSpine<_, _, _, _, usize, ColumnStack<_>>>(
+                .arrange_core::<_, ColValSpine<_, _, _, _, usize, TimelyStack<_>>>(
                     exchange,
                     "word count",
                 )
@@ -44,7 +44,7 @@ fn main() {
         let mut batches = Vec::new();
         for _ in 0..batch_count {
             print!(".");
-            let mut stack = ColumnStack::default();
+            let mut stack = TimelyStack::default();
             for _ in 0..size {
                 let len = rng.gen_range(1..33);
                 stack.copy(&(
